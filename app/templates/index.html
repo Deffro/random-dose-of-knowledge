@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Hello There!{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+
+{% block page_content %}
+
+<div class="'element">f</div>
+
+<div class="row">
+    <div class="col-xs-12 center-block text-center">
+        <h1 class="display-1">
+            Random Dose of Knowledge
+        </h1>
+    </div>
+</div>
+{#
+<div class="row">
+    <span style="font-size: 3em; color: Tomato;">
+        <i class="fab fa-leanpub"></i>
+    </span>
+</div>
+#}
+
+<div class="row d-flex justify-content-center">
+    <form action="/" method="post">
+        <input type="hidden" name="clicked" value="yes" />
+        <button type="submit" class="btn btn-warning btn-lg">Today I Learned</button>
+    </form>
+</div>
+
+{% if title %}
+<h2 class="box">{{title}} and score: {{score}}</h2>
+{% endif %}
+
+
+
+{% endblock %}
