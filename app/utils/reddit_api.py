@@ -1,5 +1,7 @@
 import requests
-# import pandas as pd
+from datetime import datetime
+import pandas as pd
+import plotly.graph_objs as go
 
 
 def read_my_reddit_password(filename='pswd.txt'):
@@ -59,24 +61,54 @@ REDDIT_USERNAME = 'deffrosy'
 REDDIT_PASSWORD = read_my_reddit_password(filename='utils/pswd.txt')
 LISTING = 'random'  # controversial, best, hot, new, random, rising, top
 COUNT = '1'
-TIMEFRAME = 'all'  # hour, day, week, month, year, all
+TIMEFRAME = 'hour'  # hour, day, week, month, year, all
 
-# res = get_reddit(subreddit='python')
-#
-# df = pd.DataFrame()
-#
-# for post in res[0]['data']['children']:
-#     df = df.append({
-#         'id': post['kind'] + '_' + post['data']['id'],
-#         'title': post['data']['title'],
-#         'subreddit': post['data']['subreddit'],
-#         'upvote_ratio': post['data']['upvote_ratio'],
-#         'total_awards_received': post['data']['total_awards_received'],
-#         'score': post['data']['score'],
-#         'created': post['data']['created'],
-#         'num_comments': post['data']['num_comments'],
-#         'url': post['data']['url'],
-#         'selftext': post['data']['selftext'],
-#         'upvote_ratio': post['data']['upvote_ratio'],
-#     }, ignore_index=True)
-# df
+
+def get_post_details(res):
+    post = res[0]['data']['children'][0]
+    reddit_post_id = post['kind'] + '_' + post['data']['id']
+    title = post['data']['title']
+    subreddit = post['data']['subreddit']
+    score = post['data']['score']
+    created = datetime.utcfromtimestamp(int(post['data']['created'])).strftime('%Y-%m-%d %H:%M:%S')
+    upvote_ratio = post['data']['upvote_ratio']
+    permalink = 'https://reddit.com'+post['data']['permalink']
+    thumbnail = post['data']['thumbnail']
+    total_awards_received = post['data']['total_awards_received']
+    num_comments = post['data']['num_comments']
+    url = post['data']['url']
+    timestamp_accessed = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return {'title': title, 'score': score, 'created': created, 'upvote_ratio': upvote_ratio,
+            'thumbnail': thumbnail, 'url': url, 'subreddit': subreddit,
+            'permalink': permalink, 'total_awards_received': total_awards_received, 'num_comments': num_comments,
+            'reddit_post_id': reddit_post_id, 'timestamp_accessed': timestamp_accessed}
+
+
+def create_cumsum_plot(df):
+
+    df['timestamp_accessed'] = pd.to_datetime(df['timestamp_accessed'])
+    df = df.set_index('timestamp_accessed')
+
+    df_til = df.loc[df['subreddit'] == 'todayilearned']
+    df_ysk = df.loc[df['subreddit'] == 'YouShouldKnow']
+
+    df_til = df_til.resample('1min').count().reset_index().rename({'id': 'count'}, axis=1)[['timestamp_accessed', 'count']]
+    df_til['count'] = df_til['count'].cumsum()
+    df_til = df_til.tail(200)
+
+    df_ysk = df_ysk.resample('1min').count().reset_index().rename({'id': 'count'}, axis=1)[['timestamp_accessed', 'count']]
+    df_ysk['count'] = df_ysk['count'].cumsum()
+    df_ysk = df_ysk.tail(200)
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=df_til['timestamp_accessed'], y=df_til['count'], name='Today I Learned',
+                             mode='lines+markers', marker=dict(size=4, color='#ffc107')))
+    fig.add_trace(go.Scatter(x=df_ysk['timestamp_accessed'], y=df_ysk['count'], name='You Should Know',
+                             mode='lines+markers', marker=dict(size=4, color='#343a40')))
+    fig.update_layout(yaxis=dict(gridcolor='#DFEAF4'), xaxis=dict(gridcolor='#DFEAF4'), plot_bgcolor='white',
+                      title=f'Amount of Knowledge Received over Time', showlegend=True)
+    print('ok plot')
+    fig.write_html('static/images/cumsum.html',
+                   full_html=False,
+                   include_plotlyjs='cdn'
+                   )
