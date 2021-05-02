@@ -25,3 +25,9 @@ Done! Go to *localhost:8000* to see the app
 1. [Install](https://www.docker.com/get-started) docker.
 2. Go to the directory where Dockerfile is
 3. `docker build -t rdok:1.2 .` (don't forget the dot)
+4. docker run --name rdok -d -p 80:8000 rdok:1.2
+
+Done! Go to *localhost:80* or just *localhost* to see the app
+
+## You also want to deploy it on AWS
+I have written a fully detailed process [here](https://medium.com/p/1b504a1a2be4/).
