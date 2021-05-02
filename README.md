@@ -1,4 +1,10 @@
-# random-dose-of-knowledge
+# Random Dose of Knowledge
+![GitHub Logo](/app/static/images/sample-app.png)
+
+## Frameworks/Software/Technologies/Platforms used:
+![GitHub Logo](/app/static/images/banner.png)
+
+I have writted a [detailed blog](https://medium.com/p/1b504a1a2be4) post about this app.
 
 ## You want to run the app locally by yourself
 
