@@ -12,22 +12,29 @@
 <div class="top-box">
 <a class="github-button" href="https://github.com/Deffro/random-dose-of-knowledge" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star Deffro/random-dose-of-knowledge on GitHub">Star</a>
 </div>
+
 <div class="row">
-    <div class="col-xs-12 center-block text-center">
-        <h1 class="display-2">
-            Random Dose of Knowledge
-        </h1>
+    <div class="title">
+        Random Dose of Knowledge
     </div>
 </div>
 
 <div class="row d-flex justify-content-center">
-    <form action="/" method="post">
+    <form action="/" method="post" style="margin-top:2px">
         <input type="hidden" name="subreddit" value="todayilearned" />
         <button type="submit" class="btn btn-warning btn-lg">Today I Learned</button>
     </form>
-    <form action="/" method="post" style="margin-left:10px">
+    <form action="/" method="post" style="margin-left:10px; margin-top:2px">
         <input type="hidden" name="subreddit" value="YouShouldKnow" />
         <button type="submit" class="btn btn-dark btn-lg">You Should Know</button>
+    </form>
+    <form action="/" method="post" style="margin-left:10px; margin-top:2px">
+        <input type="hidden" name="subreddit" value="science" />
+        <button type="submit" class="btn btn-success btn-lg">Science</button>
+    </form>
+    <form action="/" method="post" style="margin-left:10px; margin-top:2px">
+        <input type="hidden" name="subreddit" value="funfacts" />
+        <button type="submit" class="btn btn-danger btn-lg">Fun Facts</button>
     </form>
 </div>
 
@@ -62,9 +69,11 @@
                 {{score}}
             </div>
         </div>
+
         <div class="row">
-            <h2>{{title}}</h2>
+            <div class="post">{{title}}</div>
         </div>
+
     </div>
     <div class="col-md-auto thumbnail">
         {% if title != 'default' %}
@@ -75,6 +84,24 @@
     </div>
 </div>
 
+<div class="row">
+<div class="comment-title">Top Comments</div>
+</div>
+{% for i,row in comments.iterrows() %}
+<div class="row">
+    <div class="comment">
+    {{row['body']}}
+                    <span style="font-size: 0.8em; color: #ffc107;">
+                <i class="far fa-star"></i>
+            </span>
+        {{row['score']}}
+        <hr class="horline">
+    </div>
+
+</div>
+{% endfor %}
+
+
 {% endif %}
 
 
@@ -84,7 +111,7 @@
 
 
 <div class="row">
-    <div class="container-fluid" style="margin-top:40px">
+    <div class="container-fluid">
         <iframe src="../static/images/cumsum.html" width="100%" height="300" frameBorder="0"></iframe>
     </div>
 </div>

@@ -4,6 +4,20 @@
  margin-top:20px;
 }
 
+.title {
+ float:right;
+ font-family: 'Fredoka One', cursive;
+ font-size: 60px;
+ text-align: center;
+ width:100%;
+ margin-top: -25px;
+}
+
+.post{
+ font-family: 'Roboto', sans-serif;
+ font-size: 30px;
+}
+
 .thumbnail {
  margin-top:40px;
 }
@@ -13,7 +27,35 @@
  border: 2px solid;
 }
 
+.comment-title {
+ font-family: Font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+ font-size: 18px;
+ color: #74777a;
+ float:left;
+ width:85%;
+ text-align: center;
+ margin-top:10px;
+ margin-bottom:10px;
+}
+
+.comment {
+ font-family: Font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+ font-size: 15px;
+ color: #74777a;
+ float:left;
+ width:85%;
+ margin-bottom:-5px;
+}
+
+.horline {
+
+ align: center;
+ width: 50%;
+}
+
 .top-box {
  margin-top:5px;
  float:right;
+ width:100%;
+ text-align: right;
 }

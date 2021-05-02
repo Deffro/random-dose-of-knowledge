@@ -4,6 +4,9 @@
 # My password file
 pswd.txt
 
+#AWS private key file
+rdok.pem
+
 # Jupyter notebook
 notebooks/
 
