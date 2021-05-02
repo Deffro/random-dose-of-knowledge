@@ -1,4 +1,7 @@
 # Random Dose of Knowledge
+
+## [Visit the App!](http://rdok.net/)
+
 ![GitHub Logo](/app/static/images/sample-app.png)
 
 ## Frameworks/Software/Technologies/Platforms used:
