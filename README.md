@@ -36,4 +36,4 @@ Done! Go to *localhost:8000* to see the app
 Done! Go to *localhost:80* or just *localhost* to see the app
 
 ## You also want to deploy it on AWS
-I have written a fully detailed process [here](https://medium.com/p/1b504a1a2be4/).
+I have written the process in full details [here](https://medium.com/p/1b504a1a2be4/).
