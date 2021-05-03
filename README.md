@@ -4,7 +4,7 @@
 
 ## Read the [detailed blog](https://medium.com/p/1b504a1a2be4) post!
 
-![GitHub Logo](/app/static/images/sample-app.png)
+![GitHub Logo](/app/static/images/demo.gif)
 
 ## Frameworks/Software/Technologies/Platforms used:
 ![GitHub Logo](/app/static/images/banner.png)
