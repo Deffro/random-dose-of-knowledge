@@ -1,6 +1,6 @@
 # Random Dose of Knowledge
 
-## [Visit the App!](http://rdok.net/)
+# [Visit the App!](http://rdok.net/)
 
 ## Read the [detailed blog](https://medium.com/p/1b504a1a2be4) post!
 
