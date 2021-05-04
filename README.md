@@ -2,7 +2,7 @@
 
 # [Visit the App!](http://rdok.net/)
 
-## Read the [detailed blog](https://medium.com/p/1b504a1a2be4) post!
+## Read the [detailed blog](https://medium.com/p/1b504a1a2be4) post on Towards Data Science!
 
 ![GitHub Logo](/app/static/images/demo.gif)
 
