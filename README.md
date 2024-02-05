@@ -1,6 +1,6 @@
 # Random Dose of Knowledge
 
-# [Visit the App!](http://rdok.net/)  (I no longer pay amazon to host my app :()
+# [Visit the App!](http://rdok.net/)  (I no longer host it)
 
 ## Read the [detailed blog](https://medium.com/p/1b504a1a2be4) post on Towards Data Science!
 
